@@ -27,10 +27,13 @@ namespace Guardian_PalindromeMVC.Controllers
                     temp += userInput[i];
                 }
 
-                //Regex rx = new Regex(@"/[^a-zA-Z0-9]\g");
+                userInput = Regex.Replace(userInput.ToLower(), "[^a-zA-Z0-9]+", "");
+                userInput = Regex.Replace(userInput, "\\s+", "");
+                temp = Regex.Replace(temp.ToLower(), "[^a-zA-Z0-9]+", "");
+                temp = Regex.Replace(temp, "\\s+", "");
 
                 bool result;
-                if (temp.ToLower() != userInput.ToLower())
+                if (temp != userInput)
                 {
                     result = false;
                 }
