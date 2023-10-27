@@ -1,0 +1,51 @@
+﻿@model RacecarDataModel
+@{
+    ViewData["Title"] = "Racecar App";
+}
+<div class="row row-cols-1 row-cols-md-2 mt-3">
+    <div class="col border-start border-end border-2">
+        <h1 class="display-5 text-center fw-bold">RacecaR</h1>
+        <h2 class="lead text-center border-2 border-bottom">A C# and ASP.NET Core Coding Challenge</h2>
+        <p>In this challenge, write a program that takes a user's input (string) and checks to see if the string is the same forwards and backwards.</p>
+        <p>To Start, enter any word or message. Press the button and the program will check to see if what you entered is the same forwards and backwards</p>
+    </div>
+    <div class="col border-start border-end border-2">
+        <form action="" method="post" class="border-2 border-bottom">
+            <label asp-for="UserInput" class="form-label">Enter Your Message Here:</label>
+            <input class="form-control" asp-for="UserInput" placeholder="Enter message here..." />
+            <button class="btn btn-primary my-3" id="btnSubmit" type="submit">Let's Check It Out!</button>
+        </form>
+
+        @if (!string.IsNullOrEmpty(Model.UserInput))
+        {
+            <!-- Result go here -->
+            @if (Model.IsPalindrome == true)
+            {
+                <div class="alert alert-success mt-5" id="alert" role="alert">
+                    <h2>Congradulations!!</h2>
+                    <p>Your Message is a Palindrome!!</p>
+                    <p>Message: @Model.UserInput</p>
+                    <p>Message Reversed: @Model.ReversedWord</p>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger mt-5" id="alert" role="alert">
+                    <h2>I'm Sorry...</h2>
+                    <p>Your Message is not a Palindrome!!</p>
+                    <p>Message: @Model.UserInput</p>
+                    <p>Message Reversed: @Model.ReversedWord</p>
+                </div>
+            }
+
+        }
+        else
+        {
+            <div class="alert alert-secondary invisible mt-5">
+                <h2>Please enter input</h2>
+            </div>
+        }
+
+
+    </div>
+</div>
